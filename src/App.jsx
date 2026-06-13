@@ -740,7 +740,7 @@ function Protocol() {
   ]
 
   return (
-    <section id="process" ref={sectionRef} className="relative bg-background" style={{ minHeight: '300vh' }}>
+    <section id="process" ref={sectionRef} className="relative bg-background" style={{ minHeight: '160vh' }}>
       <div className="sticky top-0 pt-24 sm:pt-28 pb-6 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-3">How it works · 合作流程</p>
         <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-ink tracking-tighter mb-16">
