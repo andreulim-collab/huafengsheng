@@ -182,9 +182,9 @@ function Hero() {
   return (
     <section id="home" ref={ref} className="relative min-h-[100dvh] overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1920&q=80"
-        alt="Premium athletic footwear"
-        className="absolute inset-0 h-full w-full object-cover brightness-[0.45]"
+        src="/hero.jpg"
+        alt="Shoe manufacturing — Huafengsheng factory floor"
+        className="absolute inset-0 h-full w-full object-cover brightness-[0.5]"
       />
       <div className="absolute inset-0 bg-gradient-to-br from-deep/85 via-deep/45 to-deep/75" />
       <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-deep to-transparent" />
