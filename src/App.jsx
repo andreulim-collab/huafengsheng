@@ -632,7 +632,10 @@ function Pillars() {
 /* ─── Protocol ─── */
 function Protocol() {
   const sectionRef = useRef(null)
-  const cardRefs = [useRef(null), useRef(null), useRef(null)]
+  const card0Ref = useRef(null)
+  const card1Ref = useRef(null)
+  const card2Ref = useRef(null)
+  const cardRefs = [card0Ref, card1Ref, card2Ref]
 
   useEffect(() => {
     if (prefersReducedMotion) return
@@ -876,12 +879,12 @@ function ContactForm() {
     setFiles((prev) => [...prev, ...list])
   }
 
-  const Field = ({ label, zh, ...props }) => (
+  const Field = ({ label, zh, textarea, ...props }) => (
     <div className="flex flex-col gap-1.5">
       <label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
         {label} <span className="text-primary/50">{zh}</span>
       </label>
-      {props.textarea ? (
+      {textarea ? (
         <textarea
           rows={5}
           {...props}
