@@ -251,20 +251,20 @@ function Hero() {
 
 /* ─── Brand Partners ─── */
 const BRANDS = [
-  { name: 'Lamborghini', src: 'https://logo.clearbit.com/lamborghini.com?size=160', bg: 'bg-white' },
-  { name: 'Jeep',        src: 'https://logo.clearbit.com/jeep.com?size=160',        bg: 'bg-white' },
-  { name: 'FILA',        src: 'https://logo.clearbit.com/fila.com?size=160',        bg: 'bg-white' },
-  { name: 'Spotec',      src: '/logos/spotec.png',                                  bg: 'bg-[#3D2E8E]' },
-  { name: 'Ando',        src: '/logos/ando.png',                                    bg: 'bg-black' },
-  { name: 'North Sails', src: 'https://logo.clearbit.com/northsails.com?size=160', bg: 'bg-white' },
-  { name: 'Hey Dude',    src: 'https://logo.clearbit.com/heydude.com?size=160',    bg: 'bg-white' },
-  { name: 'Ducati Corse',src: 'https://logo.clearbit.com/ducati.com?size=160',     bg: 'bg-white' },
+  { name: 'Lamborghini', src: 'https://logo.clearbit.com/lamborghini.com?size=160' },
+  { name: 'Jeep',        src: 'https://logo.clearbit.com/jeep.com?size=160' },
+  { name: 'FILA',        src: 'https://logo.clearbit.com/fila.com?size=160' },
+  { name: 'Spotec',      src: '/logos/spotec.png' },
+  { name: 'Ando',        src: '/logos/ando.png' },
+  { name: 'North Sails', src: 'https://logo.clearbit.com/northsails.com?size=160' },
+  { name: 'Hey Dude',    src: 'https://logo.clearbit.com/heydude.com?size=160' },
+  { name: 'Ducati Corse',src: 'https://logo.clearbit.com/ducati.com?size=160' },
 ]
 
-function BrandLogo({ name, src, bg }) {
+function BrandLogo({ name, src }) {
   const [imgOk, setImgOk] = useState(true)
   return (
-    <div className={`flex-shrink-0 flex items-center justify-center ${bg} rounded-2xl px-8 py-5 h-[88px] min-w-[160px] shadow-sm`}>
+    <div className="flex-shrink-0 flex items-center justify-center bg-white rounded-2xl px-8 py-5 h-[88px] min-w-[160px] shadow-sm">
       {imgOk ? (
         <img
           src={src}
@@ -293,7 +293,7 @@ function BrandPartners() {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-deep to-transparent" />
         <div className="flex gap-5 animate-marquee hover:[animation-play-state:paused]">
           {doubled.map((b, i) => (
-            <BrandLogo key={i} name={b.name} src={b.src} bg={b.bg} />
+            <BrandLogo key={i} name={b.name} src={b.src} />
           ))}
         </div>
       </div>
