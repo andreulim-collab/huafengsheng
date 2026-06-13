@@ -840,9 +840,9 @@ function Timeline() {
               >
                 {/* Card */}
                 <div className={`w-full sm:w-5/12 ${s.side === 'right' ? 'sm:pl-10' : 'sm:pr-10'}`}>
-                  <div className="border border-primary/25 rounded-xl p-6 bg-surface/30 hover:border-primary/50 hover:bg-surface/50 transition-all duration-300">
+                  <div className="border-2 border-primary rounded-xl p-6 bg-primary/10 hover:bg-primary/20 transition-all duration-300">
                     <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-2">{s.time}</p>
-                    <h3 className="font-display font-bold text-primary text-base sm:text-lg uppercase mb-2">{s.title}</h3>
+                    <h3 className="font-display font-bold text-white text-base sm:text-lg uppercase mb-2">{s.title}</h3>
                     <p className="text-ink/80 text-sm leading-relaxed">{s.desc}</p>
                   </div>
                 </div>
