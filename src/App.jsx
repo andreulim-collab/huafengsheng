@@ -273,7 +273,7 @@ function BrandLogo({ name, src }) {
           onError={() => setImgOk(false)}
         />
       ) : (
-        <span className="font-display font-bold text-[#1A1A1A] text-base tracking-tight">{name}</span>
+        <span className="font-display font-bold text-[#0F1A2E] text-base tracking-tight">{name}</span>
       )}
     </div>
   )
@@ -323,7 +323,7 @@ function StitchAnim() {
 
   return (
     <div className="h-44 rounded-3xl relative overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #2A1A0E 0%, #1A1108 60%, #111111 100%)',
+      background: 'linear-gradient(180deg, #0D1F3C 0%, #091629 60%, #0A1628 100%)',
     }}>
       <style>{`
         @keyframes rain-fall {
@@ -382,8 +382,8 @@ function StitchAnim() {
           <svg viewBox="0 0 12 16" width={d.size} height={d.size * 1.3}>
             <defs>
               <linearGradient id={`tg${i}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#F5924D" />
-                <stop offset="100%" stopColor="#C44E0D" />
+                <stop offset="0%" stopColor="#4A80F0" />
+                <stop offset="100%" stopColor="#1240A8" />
               </linearGradient>
             </defs>
             {/* Shoe sole / teardrop silhouette */}
@@ -403,13 +403,13 @@ function StitchAnim() {
         <path
           d="M0 12 Q50 6 100 12 Q150 18 200 12 Q250 6 300 12 Q350 18 400 12"
           fill="none"
-          stroke="rgba(232,99,26,0.3)"
+          stroke="rgba(26,86,219,0.3)"
           strokeWidth="1.5"
         />
         <path
           d="M0 14 Q50 8 100 14 Q150 20 200 14 Q250 8 300 14 Q350 20 400 14"
           fill="none"
-          stroke="rgba(232,99,26,0.12)"
+          stroke="rgba(26,86,219,0.12)"
           strokeWidth="1"
         />
       </svg>
@@ -425,7 +425,7 @@ function StitchAnim() {
             width: 16,
             height: 6,
             borderRadius: '50%',
-            border: '1px solid rgba(232,99,26,0.5)',
+            border: '1px solid rgba(26,86,219,0.5)',
             animation: `rain-ripple 1.8s ${i * 0.6}s infinite`,
           }}
         />
