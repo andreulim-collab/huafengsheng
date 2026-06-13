@@ -273,7 +273,7 @@ function BrandLogo({ name, src }) {
           onError={() => setImgOk(false)}
         />
       ) : (
-        <span className="font-display font-bold text-[#0F1A2E] text-base tracking-tight">{name}</span>
+        <span className="font-display font-bold text-[#080F1E] text-base tracking-tight">{name}</span>
       )}
     </div>
   )
@@ -323,7 +323,7 @@ function StitchAnim() {
 
   return (
     <div className="h-44 rounded-3xl relative overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #0D1F3C 0%, #091629 60%, #0A1628 100%)',
+      background: 'linear-gradient(180deg, #0A1628 0%, #080F1E 60%, #060C18 100%)',
     }}>
       <style>{`
         @keyframes rain-fall {
@@ -382,8 +382,8 @@ function StitchAnim() {
           <svg viewBox="0 0 12 16" width={d.size} height={d.size * 1.3}>
             <defs>
               <linearGradient id={`tg${i}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#4A80F0" />
-                <stop offset="100%" stopColor="#1240A8" />
+                <stop offset="0%" stopColor="#E0C56A" />
+                <stop offset="100%" stopColor="#A88930" />
               </linearGradient>
             </defs>
             {/* Shoe sole / teardrop silhouette */}
@@ -403,13 +403,13 @@ function StitchAnim() {
         <path
           d="M0 12 Q50 6 100 12 Q150 18 200 12 Q250 6 300 12 Q350 18 400 12"
           fill="none"
-          stroke="rgba(26,86,219,0.3)"
+          stroke="rgba(201,168,76,0.3)"
           strokeWidth="1.5"
         />
         <path
           d="M0 14 Q50 8 100 14 Q150 20 200 14 Q250 8 300 14 Q350 20 400 14"
           fill="none"
-          stroke="rgba(26,86,219,0.12)"
+          stroke="rgba(201,168,76,0.12)"
           strokeWidth="1"
         />
       </svg>
@@ -425,7 +425,7 @@ function StitchAnim() {
             width: 16,
             height: 6,
             borderRadius: '50%',
-            border: '1px solid rgba(26,86,219,0.5)',
+            border: '1px solid rgba(201,168,76,0.5)',
             animation: `rain-ripple 1.8s ${i * 0.6}s infinite`,
           }}
         />
@@ -784,6 +784,81 @@ function Protocol() {
           </div>
         </div>
       ))}
+    </section>
+  )
+}
+
+/* ─── Timeline ─── */
+function Timeline() {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    const ctx = gsap.context(() => {
+      gsap.from('.tl-card', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  const steps = [
+    { time: '~7 Days',   side: 'left',  title: 'Brief & Design',        desc: 'Brand onboarding, concept development, design direction, and tech pack preparation.' },
+    { time: '~7 Days',   side: 'right', title: 'Material Sourcing',      desc: 'Material and component selection, supplier confirmation, swatches, and initial costing.' },
+    { time: '~7 Days',   side: 'left',  title: 'Performance Sampling',   desc: 'First prototype built — fit, comfort, structure, durability, and performance evaluated.' },
+    { time: '~7 Days',   side: 'right', title: 'Size Run & Approval',    desc: 'Final pre-production sample and full size run prepared for brand sign-off.' },
+    { time: '1–2 Months',side: 'left',  title: 'Production & QC',        desc: 'Mass manufacturing with inline QC, packaging coordination, and shipment arrangement.' },
+  ]
+
+  return (
+    <section ref={ref} className="bg-deep py-24 sm:py-32 lg:py-40">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="text-center mb-20">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-primary mb-3">End-to-End · 全程周期</p>
+          <h2 className="font-display text-4xl sm:text-6xl font-bold text-white tracking-tighter uppercase mb-5">
+            Your Timeline
+          </h2>
+          <p className="text-muted max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+            Approximately{' '}
+            <strong className="text-primary font-semibold">2–3 months</strong>{' '}
+            from brand briefing to shipment, depending on design complexity, sample revisions, and order quantity.
+          </p>
+        </div>
+
+        <div className="relative">
+          {/* Center vertical line */}
+          <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-px bg-primary/20 -translate-x-1/2" />
+
+          <div className="flex flex-col gap-10">
+            {steps.map((s, i) => (
+              <div
+                key={i}
+                className={`tl-card flex flex-col sm:flex-row items-center gap-6 sm:gap-0 ${
+                  s.side === 'right' ? 'sm:flex-row-reverse' : ''
+                }`}
+              >
+                {/* Card */}
+                <div className={`w-full sm:w-5/12 ${s.side === 'right' ? 'sm:pl-10' : 'sm:pr-10'}`}>
+                  <div className="border border-primary/25 rounded-xl p-6 bg-surface/30 hover:border-primary/50 hover:bg-surface/50 transition-all duration-300">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-2">{s.time}</p>
+                    <h3 className="font-display font-bold text-white text-base sm:text-lg uppercase mb-2">{s.title}</h3>
+                    <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
+                  </div>
+                </div>
+
+                {/* Center dot */}
+                <div className="hidden sm:flex w-2/12 justify-center items-center">
+                  <div className="w-3 h-3 rounded-sm bg-primary rotate-45 ring-4 ring-primary/20" />
+                </div>
+
+                {/* Empty opposing col */}
+                <div className="hidden sm:block w-5/12" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
@@ -1187,6 +1262,7 @@ export default function App() {
         <Features />
         <Pillars />
         <Protocol />
+        <Timeline />
         <ServicesGrid />
         <TrustSignals />
         <ContactForm />

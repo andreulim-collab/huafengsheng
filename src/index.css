@@ -5,17 +5,17 @@
 @layer base {
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   body { @apply bg-background text-ink font-body; overflow-x: hidden; }
-  ::selection { background-color: #1A56DB; color: #fff; }
+  ::selection { background-color: #C9A84C; color: #080F1E; }
   ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: #F8F9FC; }
-  ::-webkit-scrollbar-thumb { background: #4A80F0; border-radius: 10px; }
-  ::-webkit-scrollbar-thumb:hover { background: #1A56DB; }
+  ::-webkit-scrollbar-track { background: #0D1B38; }
+  ::-webkit-scrollbar-thumb { background: #C9A84C; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #E0C56A; }
 }
 
 @layer components {
   .noise-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 1; opacity: 0.04; mix-blend-mode: multiply;
+    pointer-events: none; z-index: 1; opacity: 0.04; mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   .magnetic-btn { position: relative; overflow: hidden; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
@@ -23,7 +23,7 @@
   .magnetic-btn:active { transform: scale(0.98); }
   .magnetic-btn::before {
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
     transform: translateY(100%);
     transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
   }
@@ -31,28 +31,28 @@
   .lift-on-hover { transition: transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
   .lift-on-hover:hover { transform: translateY(-1px); }
   .gradient-text {
-    background: linear-gradient(135deg, #1A56DB 0%, #D4AF37 100%);
+    background: linear-gradient(135deg, #C9A84C 0%, #E0C56A 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .glass {
-    background: rgba(248,249,252,0.72);
+    background: rgba(13,27,56,0.88);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(26,86,219,0.15);
+    border: 1px solid rgba(201,168,76,0.2);
   }
   .glass-dark {
-    background: rgba(10,22,40,0.75);
+    background: rgba(8,15,30,0.80);
     backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   }
-  .ring-pulse { box-shadow: 0 0 0 0 rgba(26,86,219,0.6); animation: ring-pulse 2s infinite; }
+  .ring-pulse { box-shadow: 0 0 0 0 rgba(201,168,76,0.6); animation: ring-pulse 2s infinite; }
   @keyframes ring-pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(26,86,219,0.6); }
-    70%  { box-shadow: 0 0 0 14px rgba(26,86,219,0); }
-    100% { box-shadow: 0 0 0 0 rgba(26,86,219,0); }
+    0%   { box-shadow: 0 0 0 0 rgba(201,168,76,0.6); }
+    70%  { box-shadow: 0 0 0 14px rgba(201,168,76,0); }
+    100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
   }
   .grid-bg {
     background-image:
-      linear-gradient(rgba(26,86,219,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26,86,219,0.07) 1px, transparent 1px);
+      linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
     background-size: 40px 40px;
   }
   .text-balance { text-wrap: balance; }
