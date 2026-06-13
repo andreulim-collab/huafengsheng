@@ -33,6 +33,8 @@ export default {
         'pulse-slow': 'pulse 3s ease-in-out infinite',
         blink: 'blink 1s step-end infinite',
         float: 'float 6s ease-in-out infinite',
+        marquee: 'marquee 32s linear infinite',
+        'marquee-reverse': 'marquee-reverse 32s linear infinite',
       },
       keyframes: {
         blink: {
@@ -42,6 +44,14 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-8px)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
     },

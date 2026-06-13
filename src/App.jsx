@@ -249,6 +249,58 @@ function Hero() {
   )
 }
 
+/* ─── Brand Partners ─── */
+const BRANDS = [
+  { name: 'Lamborghini', domain: 'lamborghini.com' },
+  { name: 'Jeep',        domain: 'jeep.com' },
+  { name: 'FILA',        domain: 'fila.com' },
+  { name: 'Spotec',      domain: 'spotec.co.id' },
+  { name: 'Ando',        domain: 'ando.co.id' },
+  { name: 'North Sails', domain: 'northsails.com' },
+  { name: 'Hey Dude',    domain: 'heydude.com' },
+  { name: 'Ducati Corse',domain: 'ducati.com' },
+]
+
+function BrandLogo({ name, domain }) {
+  const [imgOk, setImgOk] = useState(true)
+  return (
+    <div className="flex-shrink-0 flex items-center justify-center bg-white rounded-2xl px-8 py-5 h-[88px] min-w-[160px] shadow-sm">
+      {imgOk ? (
+        <img
+          src={`https://logo.clearbit.com/${domain}?size=160`}
+          alt={name}
+          className="h-10 max-w-[130px] w-auto object-contain"
+          onError={() => setImgOk(false)}
+        />
+      ) : (
+        <span className="font-display font-bold text-ink text-sm text-center leading-tight">{name}</span>
+      )}
+    </div>
+  )
+}
+
+function BrandPartners() {
+  const doubled = [...BRANDS, ...BRANDS]
+  return (
+    <section className="py-16 sm:py-20 bg-deep overflow-hidden border-y border-white/[0.06]">
+      <div className="text-center mb-10">
+        <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-primary mb-2">Trusted by · 合作品牌</p>
+        <h2 className="font-display text-2xl sm:text-3xl font-bold text-white">Brand Partners</h2>
+      </div>
+      <div className="relative">
+        {/* fade edges */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-deep to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-deep to-transparent" />
+        <div className="flex gap-5 animate-marquee hover:[animation-play-state:paused]">
+          {doubled.map((b, i) => (
+            <BrandLogo key={i} name={b.name} domain={b.domain} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Signature animation: Stitch/Thread Drop ─── */
 function StitchAnim() {
   const statuses = ['Sourcing materials', 'Sampling in progress', 'In production', 'QC passed ✓']
@@ -1131,6 +1183,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <BrandPartners />
         <Features />
         <Pillars />
         <Protocol />
