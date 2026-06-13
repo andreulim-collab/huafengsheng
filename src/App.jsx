@@ -254,8 +254,8 @@ const BRANDS = [
   { name: 'Lamborghini', src: 'https://logo.clearbit.com/lamborghini.com?size=160' },
   { name: 'Jeep',        src: 'https://logo.clearbit.com/jeep.com?size=160' },
   { name: 'FILA',        src: 'https://logo.clearbit.com/fila.com?size=160' },
-  { name: 'Spotec',      src: '/logos/spotec.png' },
-  { name: 'Ando',        src: '/logos/ando.png' },
+  { name: 'Spotec',      src: null },
+  { name: 'Ando',        src: null },
   { name: 'North Sails', src: 'https://logo.clearbit.com/northsails.com?size=160' },
   { name: 'Hey Dude',    src: 'https://logo.clearbit.com/heydude.com?size=160' },
   { name: 'Ducati Corse',src: 'https://logo.clearbit.com/ducati.com?size=160' },
@@ -265,7 +265,7 @@ function BrandLogo({ name, src }) {
   const [imgOk, setImgOk] = useState(true)
   return (
     <div className="flex-shrink-0 flex items-center justify-center bg-white rounded-2xl px-8 py-5 h-[88px] min-w-[160px] shadow-sm">
-      {imgOk ? (
+      {src && imgOk ? (
         <img
           src={src}
           alt={name}
@@ -273,7 +273,7 @@ function BrandLogo({ name, src }) {
           onError={() => setImgOk(false)}
         />
       ) : (
-        <span className="font-display font-bold text-ink text-sm text-center leading-tight">{name}</span>
+        <span className="font-display font-bold text-[#1A1A1A] text-base tracking-tight">{name}</span>
       )}
     </div>
   )
