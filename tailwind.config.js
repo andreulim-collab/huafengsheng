@@ -35,6 +35,7 @@ export default {
         float: 'float 6s ease-in-out infinite',
         marquee: 'marquee 32s linear infinite',
         'marquee-reverse': 'marquee-reverse 32s linear infinite',
+        'marquee-quad': 'marquee-quad 36s linear infinite',
       },
       keyframes: {
         blink: {
@@ -52,6 +53,10 @@ export default {
         'marquee-reverse': {
           '0%': { transform: 'translateX(-50%)' },
           '100%': { transform: 'translateX(0)' },
+        },
+        'marquee-quad': {
+          '0%':   { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-25%)' },
         },
       },
     },
