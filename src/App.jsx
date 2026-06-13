@@ -717,7 +717,7 @@ function Protocol() {
       title: 'Share your specs & targets.',
       body: 'Send us your product specifications, target volumes, and pricing. Our team evaluates fit across our supplier network and responds within 24 hours.',
       bullets: ['Product specs & SKUs', 'Target FOB pricing', 'Volume & timeline'],
-      img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&q=80',
+      img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80',
     },
     {
       num: '02',
@@ -726,7 +726,7 @@ function Protocol() {
       title: 'Samples sourced. Prices negotiated.',
       body: 'We identify the best-fit factories from our vetted network, arrange physical samples, handle all price negotiations, and present you clear options.',
       bullets: ['Factory shortlisting', 'Sample coordination', 'Negotiation & comparison'],
-      img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80',
+      img: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80',
     },
     {
       num: '03',
