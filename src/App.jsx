@@ -251,29 +251,29 @@ function Hero() {
 
 /* ─── Brand Partners ─── */
 const BRANDS = [
-  { name: 'Lamborghini', src: 'https://logo.clearbit.com/lamborghini.com?size=160' },
-  { name: 'Jeep',        src: 'https://logo.clearbit.com/jeep.com?size=160' },
-  { name: 'FILA',        src: 'https://logo.clearbit.com/fila.com?size=160' },
-  { name: 'Spotec',      src: null },
-  { name: 'Ando',        src: null },
-  { name: 'North Sails', src: 'https://logo.clearbit.com/northsails.com?size=160' },
-  { name: 'Hey Dude',    src: 'https://logo.clearbit.com/heydude.com?size=160' },
-  { name: 'Ducati Corse',src: 'https://logo.clearbit.com/ducati.com?size=160' },
+  { name: 'Lamborghini', src: '/logos/lamborghini.png' },
+  { name: 'Jeep',        src: '/logos/jeep.png' },
+  { name: 'FILA',        src: '/logos/fila.png' },
+  { name: 'Spotec',      src: '/logos/spotec.png' },
+  { name: 'Ando',        src: '/logos/ando.png' },
+  { name: 'North Sails', src: '/logos/north-sails.png' },
+  { name: 'Hey Dude',    src: '/logos/hey-dude.png' },
+  { name: 'Ducati Corse',src: '/logos/ducati-corse.png' },
 ]
 
 function BrandLogo({ name, src }) {
   const [imgOk, setImgOk] = useState(true)
   return (
-    <div className="flex items-center justify-center bg-white rounded-2xl px-4 py-5 h-[88px] w-[176px] shadow-sm">
+    <div className="flex items-center justify-center bg-white rounded-2xl px-5 py-4 h-[136px] w-[256px] shadow-sm">
       {src && imgOk ? (
         <img
           src={src}
           alt={name}
-          className="h-10 max-w-[140px] w-auto object-contain"
+          className="h-[96px] max-w-[220px] w-auto object-contain"
           onError={() => setImgOk(false)}
         />
       ) : (
-        <span className="font-display font-bold text-[#080F1E] text-sm tracking-tight text-center leading-tight">{name}</span>
+        <span className="font-display font-bold text-[#080F1E] text-base tracking-tight text-center leading-tight">{name}</span>
       )}
     </div>
   )
@@ -291,9 +291,9 @@ function BrandPartners() {
       <div className="relative">
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-deep to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-deep to-transparent" />
-        {/* Each slot is exactly 196px (176px card + 20px right padding).
-            4 copies = 4 × 8 × 196 = 6272px total.
-            Animate to -25% = 1568px = exactly one copy width → seamless loop. */}
+        {/* Each slot is exactly 220px (200px card + 20px right padding).
+            4 copies = 4 × 8 × 220 = 7040px total.
+            Animate to -25% = 1760px = exactly one copy width → seamless loop. */}
         <div
           className="flex animate-marquee-quad hover:[animation-play-state:paused]"
           style={{ willChange: 'transform' }}
