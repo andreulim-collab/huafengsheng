@@ -1004,15 +1004,21 @@ function ContactForm() {
   const onSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
-    const data = new FormData(e.target)
-    files.forEach((f) => data.append('attachment', f))
+    const fd = new FormData(e.target)
+    const payload = JSON.stringify({
+      name:    fd.get('name'),
+      email:   fd.get('email'),
+      phone:   fd.get('phone'),
+      country: fd.get('country'),
+      message: fd.get('message'),
+    })
     try {
-      const res = await fetch('https://formspree.io/f/mlgkzbea', {
+      await fetch('https://script.google.com/macros/s/AKfycbymnQbdW8nmtNEaXHMbUkdt5XWuOoY0Szoz72wADmgN4-S3WGUAAHwsEcxwp9sze7dG/exec', {
         method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        mode: 'no-cors',
+        body: payload,
       })
-      setStatus(res.ok ? 'sent' : 'error')
+      setStatus('sent')
     } catch {
       setStatus('error')
     }
