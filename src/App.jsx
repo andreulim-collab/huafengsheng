@@ -1001,10 +1001,21 @@ function ContactForm() {
   const [files, setFiles] = useState([])
   const [dragging, setDragging] = useState(false)
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
-    setTimeout(() => setStatus('sent'), 1200)
+    const data = new FormData(e.target)
+    files.forEach((f) => data.append('attachment', f))
+    try {
+      const res = await fetch('https://formspree.io/f/mlgkzbea', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      })
+      setStatus(res.ok ? 'sent' : 'error')
+    } catch {
+      setStatus('error')
+    }
   }
 
   const onDrop = (e) => {
@@ -1092,14 +1103,17 @@ function ContactForm() {
               ) : (
                 <form onSubmit={onSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="Name" zh="姓名" type="text" placeholder="Your full name" required />
-                    <Field label="Email" zh="邮箱" type="email" placeholder="you@company.com" required />
+                    <Field label="Name" zh="姓名" name="name" type="text" placeholder="Your full name" required />
+                    <Field label="Email" zh="邮箱" name="email" type="email" placeholder="you@company.com" required />
                   </div>
                   <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="WhatsApp / Phone" zh="电话" type="tel" placeholder="+1 555 0123" />
-                    <Field label="Country" zh="国家" type="text" placeholder="Philippines, USA…" />
+                    <Field label="WhatsApp / Phone" zh="电话" name="phone" type="tel" placeholder="+1 555 0123" />
+                    <Field label="Country" zh="国家" name="country" type="text" placeholder="Philippines, USA…" />
                   </div>
-                  <Field label="Message" zh="留言" textarea placeholder="Tell us about your product, volume requirements, and target pricing…" required />
+                  <Field label="Message" zh="留言" name="message" textarea placeholder="Tell us about your product, volume requirements, and target pricing…" required />
+                  {status === 'error' && (
+                    <p className="text-red-400 text-sm text-center">Something went wrong — please try again or contact us on WhatsApp.</p>
+                  )}
 
                   {/* File drop zone */}
                   <div>
