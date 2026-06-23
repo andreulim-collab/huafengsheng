@@ -35,7 +35,7 @@ export default {
         float: 'float 6s ease-in-out infinite',
         marquee: 'marquee 32s linear infinite',
         'marquee-reverse': 'marquee-reverse 32s linear infinite',
-        'marquee-quad': 'marquee-quad 36s linear infinite',
+        'marquee-quad': 'marquee-quad 15s linear infinite',
       },
       keyframes: {
         blink: {
