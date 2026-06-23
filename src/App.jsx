@@ -295,7 +295,7 @@ function BrandPartners() {
             4 copies = 4 × 8 × 220 = 7040px total.
             Animate to -25% = 1760px = exactly one copy width → seamless loop. */}
         <div
-          className="flex animate-marquee-quad hover:[animation-play-state:paused]"
+          className="flex w-max animate-marquee-quad hover:[animation-play-state:paused]"
           style={{ willChange: 'transform' }}
         >
           {track.map((b, i) => (
