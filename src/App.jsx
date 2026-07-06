@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
   Package, Hammer, Truck, TrendingUp, Globe, ShieldCheck,
   ArrowUpRight, Phone, Mail, MapPin, Menu, X, CheckCircle2,
-  Upload, ChevronRight, Award, Clock, Star, MessageSquare,
+  ChevronRight, Award, Clock, Star, MessageSquare,
 } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -996,10 +996,10 @@ function TrustSignals() {
 }
 
 /* ─── Contact Form ─── */
+const CONTACT_EMAIL = 'dingsoenterprise@gmail.com'
+
 function ContactForm() {
   const [status, setStatus] = useState('idle')
-  const [files, setFiles] = useState([])
-  const [dragging, setDragging] = useState(false)
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -1022,13 +1022,6 @@ function ContactForm() {
     } catch {
       setStatus('error')
     }
-  }
-
-  const onDrop = (e) => {
-    e.preventDefault()
-    setDragging(false)
-    const list = [...e.dataTransfer.files].slice(0, 5 - files.length)
-    setFiles((prev) => [...prev, ...list])
   }
 
   const Field = ({ label, zh, textarea, ...props }) => (
@@ -1070,6 +1063,7 @@ function ContactForm() {
             <div className="space-y-4">
               {[
                 { icon: Phone, label: 'WhatsApp', value: '+63 976 630 4431', href: 'https://wa.me/639766304431' },
+                { icon: Mail, label: 'Email', value: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
                 { icon: MapPin, label: 'Location', value: 'Jinjiang, Quanzhou, Fujian, China', href: null },
                 { icon: MessageSquare, label: 'WeChat / Line', value: 'Contact via WhatsApp first', href: null },
               ].map(({ icon: Icon, label, value, href }) => (
@@ -1121,36 +1115,17 @@ function ContactForm() {
                     <p className="text-red-400 text-sm text-center">Something went wrong — please try again or contact us on WhatsApp.</p>
                   )}
 
-                  {/* File drop zone */}
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted mb-1.5">
-                      Attachments <span className="text-primary/50">附件</span>
+                  {/* Attachments note */}
+                  <div className="flex items-start gap-3 rounded-xl bg-primary/5 border border-primary/15 px-4 py-3">
+                    <Mail className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    <p className="text-xs text-muted leading-relaxed">
+                      Have product specs, images, or tech packs to share?{' '}
+                      <span className="text-primary/50">如有产品规格、图片或技术包</span> Email them directly to{' '}
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="text-primary font-medium hover:text-primary-dark">
+                        {CONTACT_EMAIL}
+                      </a>
+                      .
                     </p>
-                    <div
-                      onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
-                      onDragLeave={() => setDragging(false)}
-                      onDrop={onDrop}
-                      className={`border-2 border-dashed rounded-xl p-5 flex flex-col items-center gap-2 cursor-pointer transition-colors ${
-                        dragging ? 'border-primary bg-primary/5' : 'border-divider hover:border-primary/40'
-                      }`}
-                    >
-                      <Upload className="h-5 w-5 text-muted" />
-                      <p className="text-xs text-muted text-center">
-                        Drag & drop product specs, images, or tech packs<br />
-                        <span className="text-primary">or click to browse</span> — up to 5 files
-                      </p>
-                      <input type="file" multiple className="hidden" onChange={(e) => setFiles((p) => [...p, ...[...e.target.files].slice(0, 5 - p.length)])} />
-                    </div>
-                    {files.length > 0 && (
-                      <ul className="mt-2 space-y-1">
-                        {files.map((f, i) => (
-                          <li key={i} className="flex items-center justify-between text-xs text-muted">
-                            <span>{f.name}</span>
-                            <button type="button" onClick={() => setFiles((p) => p.filter((_, j) => j !== i))} className="text-primary hover:text-primary-dark ml-2">×</button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </div>
 
                   <button
